@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:5.7.36
+    environment:
+      MYSQL_USER: main
+      MYSQL_PASSWORD: main
+      MYSQL_ROOT_PASSWORD: main
+      MYSQL_DATABASE: db
+    ports:
+      - "33061:3306"
+
+  test_database:
+    image: mysql:5.7.36
+    environment:
+      MYSQL_USER: main
+      MYSQL_PASSWORD: main
+      MYSQL_ROOT_PASSWORD: main
+      MYSQL_DATABASE: db_test
+    ports:
+      - "33062:3306"
