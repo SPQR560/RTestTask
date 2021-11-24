@@ -4,16 +4,71 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+               and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ path("index") }}">testtask</a>
+            <ul class="navbar-nav px-3">
+                {#            <li class="nav-item text-nowrap">#}
+                {#                <a class="nav-link" href="{{ path("admin") }}">{{ app.user.email|e }}</a>#}
+                {#            </li>#}
+                {#            <li class="nav-item text-nowrap">#}
+                {#                <a class="nav-link" href="{{ path("app_logout") }}">logout</a>#}
+                {#            </li>#}
+
+                {#            <li class="nav-item text-nowrap">#}
+                {#                <a class="nav-link" href="{{ path("app_login") }}">Log in</a>#}
+        {#        </li>#}
+            </ul>
+        </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <a href="#"  class="d-block">Создать профиль</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                    <a href="#" class="d-block">Ссылка</a>
+                </nav>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    {% block body %}{% endblock %}
+                </main>
+            </div>
+        </div>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
     </body>
 </html>
