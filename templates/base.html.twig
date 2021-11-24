@@ -31,36 +31,11 @@
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                     <a href="#"  class="d-block">Создать профиль</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
-                    <a href="#" class="d-block">Ссылка</a>
+                    <div class="list-group list-group-flush overflow-auto vh-100">
+                        {% for profile in profiles %}
+                            <a href="#">{{ profile.name|e }} {{ profile.surname|e }} {{ profile.patronymic|e }}</a>
+                        {% endfor %}
+                    </div>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     {% block body %}{% endblock %}
