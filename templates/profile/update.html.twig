@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ profile.surname|e }} {{ profile.name|e }}  {{ profile.patronymic|e }}{% endblock %}
+
+{% block body %}
+    Почты
+    <table>
+        {% for email in emails %}
+            <tr>
+                {%  if email.isMain %}
+                    <td><b>{{ email.email }}</b></td>
+                {% else %}
+                    <td>{{ email.email }}</td>
+                {% endif %}
+                <td><a href="{{ path('make_email_main', {'id': email.id}) }}">Сделать основной</a></td>
+                <td><a href="{{ path('update_email', {'id': email.id, redirect: 'update'}) }}" class="btn btn-primary">Обновить</a></td>
+                <td>
+                    <form action="{{ path('delete_email', { id: email.id })}}" method="post">
+                        <input type="submit" value="удалить" class="btn btn-danger"/>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ path('add_email', {redirect: 'update', id: profile.id}) }}">Добавить почту</a>
+    <hr><br>
+    Телефоны
+    <table>
+    {% for phone in phones %}
+        <tr>
+            {%  if phone.isMain %}
+                <td><b>{{ phone.number }}</b></td>
+            {% else %}
+                <td>{{ phone.number }}</td>
+            {% endif %}
+            <td>{{ phone.type.type }}</td>
+            <td><a href="{{ path('make_phone_main', {'id': phone.id}) }}">Сделать основной</a></td>
+            <td><a href="{{ path('update_phone', {'id': phone.id, redirect: 'update'}) }}" class="btn btn-primary">Обновить</a></td>
+            <td>
+                <form action="{{ path('delete_phone', { id: phone.id })}}" method="post">
+                    <input type="submit" value="удалить" class="btn btn-danger"/>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{{ path('add_phone', {redirect: 'update', id: profile.id}) }}">Добавить телефон</a>
+    {{ form(profile_form) }}
+
+{% endblock %}

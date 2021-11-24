@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PhoneRepository::class)
- * @UniqueEntity("number")
+ * @UniqueEntity("number", message="Данный номер уже используется")
  */
 class Phone
 {
@@ -22,7 +22,7 @@ class Phone
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\Regex(pattern="/^[+]?\d*[(]?([\d]{3})*[)]?\d{3}-?\d{2}-?\d{2}$/", message="номер не валидный")
+     * @Assert\Regex(pattern="/^[+]?\d?[(]?([\d]{3})?[)]?\d{3}-?\d{2}-?\d{2}$/", message="номер не валидный")
      */
     private $number;
 
@@ -42,6 +42,11 @@ class Phone
      * @ORM\Column(type="boolean")
      */
     private $isMain;
+
+    public function __toString()
+    {
+        return $this->getNumber();
+    }
 
     public function getId(): ?int
     {

@@ -50,6 +50,11 @@ class Profile
         $this->emails = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return "{$this->getSurname()} {$this->getName()} {$this->getPatronymic()}";
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EmailRepository::class)
- * @UniqueEntity("email")
+ * @UniqueEntity("email", message="Данный емейл уже используется")
  */
 class Email
 {
@@ -36,6 +36,11 @@ class Email
      * @ORM\Column(type="boolean")
      */
     private $isMain;
+
+    public function __toString()
+    {
+        return $this->getEmail();
+    }
 
     public function getId(): ?int
     {

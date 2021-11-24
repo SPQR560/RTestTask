@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -12,7 +12,7 @@
     </head>
     <body>
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ path("index") }}">testtask</a>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ path("index") }}">test task</a>
             <ul class="navbar-nav px-3">
                 {#            <li class="nav-item text-nowrap">#}
                 {#                <a class="nav-link" href="{{ path("admin") }}">{{ app.user.email|e }}</a>#}
@@ -30,12 +30,14 @@
         <div class="container-fluid">
             <div class="row">
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <a href="#"  class="d-block">Создать профиль</a>
-                    <div class="list-group list-group-flush overflow-auto vh-100">
-                        {% for profile in profiles %}
-                            <a href="#">{{ profile.name|e }} {{ profile.surname|e }} {{ profile.patronymic|e }}</a>
-                        {% endfor %}
-                    </div>
+                    <a href="{{ path('add_profile') }}"  class="d-block">Создать профиль</a>
+                    <hr>
+                    {% for profile in profiles %}
+                        <a href="{{ path('show', { id: profile.id }) }}" class="d-block">
+                            {{ profile.surname|e }} {{ profile.name|e }} {{ profile.patronymic|e }}
+                        </a>
+                        <hr>
+                    {% endfor %}
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     {% block body %}{% endblock %}

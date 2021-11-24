@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ profile.surname|e }} {{ profile.name|e }}  {{ profile.patronymic|e }}{% endblock %}
+
+{% block body %}
+
+    <h1>{{ profile.surname|e }} {{ profile.name|e }}  {{ profile.patronymic|e }}</h1>
+
+    <a href="{{ path('update', { id: profile.id })}}">Обновить</a>
+    <form action="{{ path('delete', { id: profile.id })}}" method="post">
+        <input type="submit" value="удалить" />
+    </form>
+
+    Список почт
+    <ul>
+        {% for email in emails %}
+            {%  if email.isMain %}
+                <li><b>{{ email.email|e }} осн.</b></li>
+            {% else %}
+                <li>{{ email.email|e }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    Список номеров
+    <ul>
+        {% for phone in phones %}
+            <li>
+                {%  if phone.isMain %}
+                    <b>{{ phone.number|e }} осн.</b>
+                {% else %}
+                    {{ phone.number|e }}
+                {% endif %}
+                {{ phone.type.type }}
+            </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}

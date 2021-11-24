@@ -29,6 +29,11 @@ class PhoneType
      */
     private $phones;
 
+    public function __toString()
+    {
+        return $this->getType();
+    }
+
     public function __construct()
     {
         $this->phones = new ArrayCollection();
