@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\PhoneRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PhoneRepository::class)
+ * @UniqueEntity("number")
  */
 class Phone
 {
@@ -18,7 +21,8 @@ class Phone
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Regex(pattern="/^[+]?\d*[(]?([\d]{3})*[)]?\d{3}-?\d{2}-?\d{2}$/", message="номер не валидный")
      */
     private $number;
 

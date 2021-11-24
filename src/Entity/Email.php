@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use App\Repository\EmailRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EmailRepository::class)
+ * @UniqueEntity("email")
  */
 class Email
 {
@@ -18,7 +21,8 @@ class Email
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email(message = "Емейл '{{ value }}' не валидный.")
      */
     private $email;
 
