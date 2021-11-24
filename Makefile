@@ -20,3 +20,6 @@ load-fixtures:
 load-fixtures-win:
 	php bin/console doctrine:fixtures:load -n
 	php bin/console doctrine:fixtures:load --env=test -n
+
+server-start:
+	php -S localhost:8000 -t public/
