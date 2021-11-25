@@ -5,7 +5,6 @@ services:
     image: mysql:5.7.36
     volumes:
       - './db:/var/lib/mysql'
-    restart: 'always'
     expose:
       - '3306'
     environment:
@@ -20,7 +19,6 @@ services:
     image: mysql:5.7.36
     volumes:
       - './db_test:/var/lib/mysql'
-    restart: 'always'
     expose:
       - '3306'
     environment:
