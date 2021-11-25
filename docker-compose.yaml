@@ -3,6 +3,11 @@ version: '3'
 services:
   database:
     image: mysql:5.7.36
+    volumes:
+      - './db:/var/lib/mysql'
+    restart: 'always'
+    expose:
+      - '3306'
     environment:
       MYSQL_USER: main
       MYSQL_PASSWORD: main
@@ -13,6 +18,11 @@ services:
 
   test_database:
     image: mysql:5.7.36
+    volumes:
+      - './db_test:/var/lib/mysql'
+    restart: 'always'
+    expose:
+      - '3306'
     environment:
       MYSQL_USER: main
       MYSQL_PASSWORD: main

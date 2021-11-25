@@ -1,5 +1,4 @@
 1) docker-compose up -d
-//запуск приложения
 2) composer install
 3) php bin/console doctrine:migrations:migrate
 4) php bin/console doctrine:fixtures:load -n
